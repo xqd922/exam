@@ -19,17 +19,28 @@ async function createWindow() {
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: false,
+                webSecurity: false,
+                allowRunningInsecureContent: true,
                 enableRemoteModule: true
             }
         });
 
         // 加载应用
         if (isDev) {
-            mainWindow.loadURL('http://localhost:3000');
-            mainWindow.webContents.openDevTools();
+            // 等待一段时间再加载URL，确保React开发服务器已经启动
+            setTimeout(() => {
+                mainWindow.loadURL('http://localhost:3000');
+                mainWindow.webContents.openDevTools();
+            }, 2000);
         } else {
             mainWindow.loadFile(path.join(__dirname, '../build/index.html'));
         }
+
+        // 处理加载错误
+        mainWindow.webContents.on('did-fail-load', () => {
+            console.log('页面加载失败，尝试重新加载...');
+            mainWindow.loadURL('http://localhost:3000');
+        });
     } catch (error) {
         console.error('应用启动失败:', error);
         app.quit();

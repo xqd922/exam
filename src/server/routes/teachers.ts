@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import Teacher from '../../models/Teacher';
+import express from 'express';
+import Teacher from '../../models/Teacher.js';
 
-const router = Router();
+const router = express.Router();
 
 // 获取所有教师
 router.get('/', async (req, res) => {

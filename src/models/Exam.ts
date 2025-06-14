@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
-import Teacher from './Teacher';
-import Classroom from './Classroom';
+import sequelize from '../config/database.mjs';
+import Teacher from './Teacher.js';
+import Classroom from './Classroom.js';
 
 class Exam extends Model {
     public id!: number;

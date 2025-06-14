@@ -4,22 +4,24 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import Layout from './components/Layout';
 import Login from './pages/Login';
-import { useAuth } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 const App: React.FC = () => {
   return (
-    <ConfigProvider locale={zhCN}>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/*" element={
-            <RequireAuth>
-              <Layout />
-            </RequireAuth>
-          } />
-        </Routes>
-      </Router>
-    </ConfigProvider>
+    <AuthProvider>
+      <ConfigProvider locale={zhCN}>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={
+              <RequireAuth>
+                <Layout />
+              </RequireAuth>
+            } />
+          </Routes>
+        </Router>
+      </ConfigProvider>
+    </AuthProvider>
   );
 };
 

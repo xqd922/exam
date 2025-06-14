@@ -1,7 +1,7 @@
-import sequelize from '../config/database';
-import Teacher from './Teacher';
-import Classroom from './Classroom';
-import Exam from './Exam';
+import sequelize from '../config/database.mjs';
+import Teacher from './Teacher.js';
+import Classroom from './Classroom.js';
+import Exam from './Exam.js';
 
 // 初始化所有模型
 const models = {

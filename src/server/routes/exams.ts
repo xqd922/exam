@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import express from 'express';
 import { Op } from 'sequelize';
-import Exam from '../../models/Exam';
-import Teacher from '../../models/Teacher';
-import Classroom from '../../models/Classroom';
+import Exam from '../../models/Exam.js';
+import Teacher from '../../models/Teacher.js';
+import Classroom from '../../models/Classroom.js';
 
-const router = Router();
+const router = express.Router();
 
 // 获取所有考试
 router.get('/', async (req, res) => {
