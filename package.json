@@ -49,12 +49,35 @@
   },
   "build": {
     "appId": "com.exam.scheduler",
+    "productName": "考试排程系统",
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
     "directories": {
       "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "考试排程系统"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "xqd922",
+      "repo": "exam"
     }
   },
   "eslintConfig": {
